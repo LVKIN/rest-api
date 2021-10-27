@@ -10,9 +10,6 @@ const SQL_ITEMS_CREATE = `
     )
 `;
 
-const SQL_ITEMS_DROP = `DROP TABLE ITEMS;
-`;
-
 const database = new sqlite3.Database(DBSOURCE, (err) => {
     if (err) {
         console.error(err.message);
