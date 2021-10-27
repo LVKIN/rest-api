@@ -3,7 +3,7 @@ import sqlite3 from 'sqlite3';
 const DBSOURCE = 'db.sqlite'
 
 const SQL_ITEMS_CREATE = `
-    CREATE TABLE ITEMS (
+    CREATE TABLE IF NOT EXISTS ITEMS (
         id INTEGER PRIMARY KEY AUTOINCREMENT,
         name TEXT,
         description TEXT
