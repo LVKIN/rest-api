@@ -15,19 +15,19 @@ const itemsRepository = {
         database.all(sql, params, (_err, rows) => callback(rows)); 
     },
     read: (id: number, callback: (item?: Item) => void) => {
-        const sql = 'SELECT * FROM ITEMS WHERE ID_ITEMS_INT = ?';
+        const sql = 'SELECT * FROM ITEMS WHERE id = ?';
         const params = [id];
         database.get(sql, params, (_err, row) => callback(row));
     },
     update: (id: number, item: Item, callback: (notFound: boolean) => void) => {
-        const sql = 'UPDATE ITEMS SET name = ?, description = ? WHERE ID_ITEMS_INT = ?'
+        const sql = 'UPDATE ITEMS SET name = ?, description = ? WHERE id = ?'
         const params = [item.name, item.description, id];
         database.run(sql, params, function(_err) {
             callback(this.changes === 0);
         });
     },
     delete: (id: number, callback: (notFound: boolean) => void) => {
-        const sql = 'DELETE FROM ITEMS WHERE ID_ITEMS_INT = ?';
+        const sql = 'DELETE FROM ITEMS WHERE id = ?';
         const params = [id];
         database.run(sql, params, function(_err) {
             callback(this.changes === 0);
